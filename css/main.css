@@ -1,0 +1,127 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Comfortaa', cursive;
+	margin: 0;
+	background-color: #F3F6F9;
+}
+
+.app {
+	display: flex;
+}
+
+.panel {
+	background-color: #FBFAFF;
+	max-height: 100vh;
+	padding: 30px;
+	
+}
+.logo {
+	margin-bottom: 50px;
+}
+.menu {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	align-items: center;
+}
+
+.menu__list {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	align-items: center;
+}
+.menu__item {
+	background: #ffff;
+	box-shadow: 0px 8px 14px rgba(62, 107, 224, 0.12);
+	border-radius: 14px;
+	border: none;
+	height: 45px;
+	width: 45px;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+.menu__item:hover {
+	background: #6A6AFB;
+}
+.menu__item:hover img {
+	filter: brightness(0) invert(1);
+}
+
+.menu__item-active {
+	background: #524ABD;
+}
+.menu__item-active img {
+	filter: brightness(0) invert(1);
+}
+
+.menu__add {
+	cursor: pointer;
+	background: none;
+	border: 1px solid #CAD5FF;
+	border-radius: 14px;
+	width: 45px;
+	height: 45px;
+}
+
+.menu__add:hover {
+	background: #eff2ff;
+}
+.content {
+	min-width: 900px;
+	padding: 45px;
+}
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.title {
+	font-size: 30px;
+	line-height: 33px;
+	color: #000000;
+}
+
+.progress {
+	display: flex;
+	flex-direction: column;
+	gap: 13px;
+	min-width: 235px;
+}
+
+.progress__text {
+	display: flex;
+	justify-content: space-between;
+}
+
+.progress__name {
+	font-size: 14px;
+	line-height: 16px;
+	color: #232360;
+}
+
+.progress__percent {
+	font-size: 12px;
+	line-height: 13px;
+	color: #768396;
+}
+
+.progress__bar {
+	width: 100%;
+	background: #E6E9ED;
+	border-radius: 4px;
+	height: 5px;
+	position: relative;
+}
+
+.progress__cover-bar {
+	position: absolute;
+	width: 80%;
+	height: 5px;
+	background: #524ABD;
+	border-radius: 4px;
+}
