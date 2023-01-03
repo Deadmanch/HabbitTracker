@@ -7,7 +7,7 @@
 	<title>Habit Tracker</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/normalize.css">
 </head>
@@ -17,15 +17,6 @@
 		<img class="logo" src="images/logo.svg" alt="Логотип Deadmanch App">
 		<nav class="menu">
 			<div class="menu__list">
-				<button class="menu__item ">
-					<img src="images/dumbbell.svg" alt="Иконка гантель">
-				</button>
-				<button class="menu__item menu__item-active">
-					<img src="images/water.svg" alt="Иконка воды">
-				</button>
-				<button class="menu__item">
-					<img src="images/eat.svg" alt="Иконка еды">
-				</button>
 			</div>
 			<button class="menu__add">
 				<img src="images/add.svg" alt="Иконка добавления новых привычек">
@@ -46,7 +37,23 @@
 			</div>
 		</header>
 			<main class="main">
-			
+				<div>
+					<div class="habbit">
+						<div class="habbit__day">День 1</div>
+							<div class="habbit__comment">Первый подход всегда даётся тяжело</div>
+								<button class="habbit__delete">
+									<img src="./images/delete.svg" alt="Иконка удаления привычки">
+								</button>
+							</div>
+				</div>
+				<div class="habbit">
+					<div class="habbit__day">День 2</div>
+					<form class="habbit__form">
+					<input class="input_icon" type="text" placeholder="Комментарий" />
+						<img class="input__icon" src="./images/comment.svg" alt="Иконка комментария">
+					<button class="button">Готово</button>
+					</form>
+				</div>
 			</main>
 		</div>
 	</div>
