@@ -37,21 +37,13 @@
 			</div>
 		</header>
 			<main class="main">
-				<div>
-					<div class="habbit">
-						<div class="habbit__day">День 1</div>
-							<div class="habbit__comment">Первый подход всегда даётся тяжело</div>
-								<button class="habbit__delete">
-									<img src="./images/delete.svg" alt="Иконка удаления привычки">
-								</button>
-							</div>
-				</div>
+				<div id="days"></div>
 				<div class="habbit">
-					<div class="habbit__day">День 2</div>
-					<form class="habbit__form">
-					<input class="input_icon" type="text" placeholder="Комментарий" />
+					<div class="habbit__day">День _</div>
+					<form class="habbit__form" onsubmit="addDays(event)">
+					<input name="comment" class="input_icon" type="text" placeholder="Комментарий" />
 						<img class="input__icon" src="./images/comment.svg" alt="Иконка комментария">
-					<button class="button">Готово</button>
+					<button class="button" type="submit">Готово</button>
 					</form>
 				</div>
 			</main>

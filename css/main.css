@@ -190,7 +190,9 @@ input:focus {
 	outline-color: #dcdaff;
 }
 
-
+input.error {
+	border: 1px solid red;
+}
 
 .habbit__form {
 	display: flex;
