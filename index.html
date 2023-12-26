@@ -7,11 +7,66 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="styles/global.css" />
+		<link rel="stylesheet" href="styles/layout/header.css" />
 		<link rel="stylesheet" href="styles/app.css" />
-		<link rel="stylesheet" href="styles/components/" />
-		<title>HabbitTracker - By Stepanov Danil</title>
+		<link rel="stylesheet" href="styles/components/components.css" />
+		<title>HabitTracker - By Stepanov Danil</title>
 	</head>
 	<body>
+		<div class="app">
+			<div class="panel">
+				<img src="./img/logo.svg" alt="Логотип" class="logo" />
+				<nav class="menu">
+					<div class="menu__list">
+						<button class="habit-img menu__item">
+							<img src="/img/icon/menu-icon/water-icon.svg" alt="Иконка воды" />
+						</button>
+						<button class="habit-img habit-img_active menu__item">
+							<img src="/img/icon/menu-icon/dumbbell-icon.svg" alt="Иконка гантели" />
+						</button>
+						<button class="habit-img menu__item">
+							<img src="/img/icon/menu-icon/eat-icon.svg" alt="Иконка еды" />
+						</button>
+					</div>
+					<button class="menu__add">
+						<img src="img/icon/menu-icon/add-icon.svg" alt="Иконка добавить привычку" />
+					</button>
+				</nav>
+			</div>
+			<div class="content">
+				<header class="header">
+					<h1 class="title">Отжимания</h1>
+					<div class="progress">
+						<div class="progress__text">
+							<div class="progress__name">Прогресс</div>
+							<div class="progress__percent">80%</div>
+						</div>
+						<div class="progress__bar">
+							<div class="progress__cover-bar"></div>
+						</div>
+					</div>
+				</header>
+				<main class="main">
+					<div>
+						<div class="habit">
+							<div class="habit__day">День 1</div>
+							<div class="habit__comment">Первый подход всегда даётся тяжело</div>
+							<button class="habit__delete">
+								<img src="/img/icon/delete-icon.svg" alt="Иконка - удалить привычку" />
+							</button>
+						</div>
+						<div class="habit">
+							<div class="habit__day">День 2</div>
+							<form class="habit__form">
+								<input class="input_icon" type="text" placeholder="Комментарий" />
+								<img class="input__icon" src="./img/icon/comment-icon.svg" alt="Иконка добавления комментария" />
+								<button class="btn">Готово</button>
+							</form>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
 		<script src="js/script.js"></script>
 	</body>
 </html>
