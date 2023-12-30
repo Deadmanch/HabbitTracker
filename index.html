@@ -18,18 +18,18 @@
 				<img src="./img/logo.svg" alt="Логотип" class="logo" />
 				<nav class="menu">
 					<div class="menu__list"></div>
-					<button class="menu__add">
+					<button class="menu__add" onclick="TogglePopup()">
 						<img src="img/icon/menu-icon/add-icon.svg" alt="Иконка добавить привычку" />
 					</button>
 				</nav>
 			</div>
 			<div class="content">
 				<header class="header">
-					<h1 class="title">Отжимания</h1>
+					<h1 class="title">-</h1>
 					<div class="progress">
 						<div class="progress__text">
 							<div class="progress__name">Прогресс</div>
-							<div class="progress__percent">80%</div>
+							<div class="progress__percent">%</div>
 						</div>
 						<div class="progress__bar">
 							<div class="progress__cover-bar"></div>
@@ -37,24 +37,42 @@
 					</div>
 				</header>
 				<main class="main">
-					<div>
-						<div class="habit">
-							<div class="habit__day">День 1</div>
-							<div class="habit__comment">Первый подход всегда даётся тяжело</div>
-							<button class="habit__delete">
-								<img src="/img/icon/delete-icon.svg" alt="Иконка - удалить привычку" />
-							</button>
-						</div>
-						<div class="habit">
-							<div class="habit__day">День 2</div>
-							<form class="habit__form">
-								<input class="input_icon" type="text" placeholder="Комментарий" />
-								<img class="input__icon" src="./img/icon/comment-icon.svg" alt="Иконка добавления комментария" />
-								<button class="btn">Готово</button>
-							</form>
-						</div>
+					<div id="days"></div>
+					<div class="habit">
+						<div class="habit__day">День 1</div>
+						<form class="habit__form" onsubmit="addDays(event)">
+							<input name="comment" class="input_icon" type="text" placeholder="Комментарий" />
+							<img class="input__icon" src="./img/icon/comment-icon.svg" alt="Иконка добавления комментария" />
+							<button class="btn" type="submit">Готово</button>
+						</form>
 					</div>
 				</main>
+			</div>
+			<div class="cover cover_hidden" id="add-habit_popup">
+				<div class="popup">
+					<h2 class="popup__title">Новая привычка</h2>
+					<div class="icon-label">Иконка</div>
+					<div class="icon-select">
+						<button class="icon icon_active" onclick="setIcon(this, 'sport')">
+							<img src="./img/icon/menu-icon/sport-icon.svg" alt="Иконка Спорт" />
+						</button>
+						<button class="icon" onclick="setIcon(this, 'water')">
+							<img src="./img/icon/menu-icon/water-icon.svg" alt="Иконка Воды" />
+						</button>
+						<button class="icon" onclick="setIcon(this, 'eat')">
+							<img src="./img/icon/menu-icon/eat-icon.svg" alt="Иконка Еды" />
+						</button>
+					</div>
+					<form class="popup__form">
+						<input type="text" name="name" placeholder="Название" inputmode="text" />
+						<input type="text" name="icon" hidden value="sport" />
+						<input type="number" name="target" placeholder="Цель" inputmode="numeric" />
+						<button class="btn" type="submit">Добавить</button>
+						<button class="popup__close" onclick="TogglePopup()">
+							<img src="./img/icon/cross-icon.svg" alt="Иконка закрытия Popup" />
+						</button>
+					</form>
+				</div>
 			</div>
 		</div>
 		<script src="js/script.js"></script>

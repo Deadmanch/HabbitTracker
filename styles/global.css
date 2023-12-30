@@ -31,6 +31,7 @@
 	--border-4: 4px;
 	/* *Animation */
 	--transition-speed: 0.2s;
+	--transition-low: 0.5s;
 }
 * {
 	box-sizing: border-box;
@@ -82,4 +83,13 @@ input {
 }
 input::placeholder {
 	color: var(--color-light);
+}
+
+input.error {
+	border: 1px solid #d22d2d;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }

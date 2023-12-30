@@ -137,9 +137,97 @@
 
 .progress__cover-bar {
 	position: absolute;
-	width: 50%;
+	transition: all var(--transition-low);
 	height: 5px;
 	border-radius: var(--border-4);
 	background: var(--primary);
 }
 /** Popup - Add Habit */
+.cover {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.25);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cover_hidden {
+	display: none;
+}
+
+.popup {
+	border-radius: var(--border-10);
+	background: var(--main-light);
+	box-shadow: 0px 8px 14px 12px rgba(56, 56, 56, 0.05);
+	min-width: 600px;
+	padding: 20px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.popup__close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+.popup__title {
+	color: var(--color-dark);
+	font-size: var(--size-24);
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 10px;
+}
+
+.icon-label {
+	color: var(--secondary-grey);
+	font-size: var(--size-14);
+	line-height: normal;
+	margin-bottom: 10px;
+}
+
+.icon-select {
+	display: flex;
+	gap: 25px;
+	margin-bottom: 18px;
+}
+.icon {
+	border-radius: var(--border-14);
+	border: 1px solid var(--primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 45px;
+	height: 45px;
+	background: var(--main-light);
+	transition: all var(--transition-speed);
+}
+
+.icon:hover,
+.icon:focus {
+	background: var(--primary-hover);
+}
+.icon:hover img,
+.icon:focus img {
+	filter: brightness(0) invert(1);
+}
+.icon_active {
+	background: var(--primary);
+}
+
+.icon_active img {
+	filter: brightness(0) invert(1);
+}
+
+.popup__form {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+}
