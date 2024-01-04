@@ -33,6 +33,41 @@ function loadData() {
 function saveData() {
 	localStorage.setItem(HABIT_KEY, JSON.stringify(habits));
 }
+
+function togglePopup() {
+	if (page.popup.index.classList.contains('cover_hidden')) {
+		page.popup.index.classList.remove('cover_hidden');
+	} else {
+		page.popup.index.classList.add('cover_hidden');
+	}
+}
+function resetForm(form, fields) {
+	for (const field of fields) {
+		form[field].value = '';
+	}
+}
+function validateAndGetFormData(form, fields) {
+	const formData = new FormData(form);
+	const res = {};
+	for (const field of fields) {
+		const fieldValue = formData.get(field);
+		form[field].classList.remove('error');
+		if (!fieldValue) {
+			return form[field].classList.add('error');
+		}
+		res[field] = fieldValue;
+	}
+	let isValid = true;
+	for (const field of fields) {
+		if (!res[field]) {
+			isValid = false;
+		}
+	}
+	if (!isValid) {
+		return;
+	}
+	return res;
+}
 //* Render
 function rerenderMenu(activeHabit) {
 	for (const habit of habits) {
@@ -84,30 +119,28 @@ function rerender(activeHabitId) {
 	if (!activeHabit) {
 		return;
 	}
+	document.location.replace(document.location.pathname + '#' + activeHabitId);
 	rerenderMenu(activeHabit);
 	rerenderHead(activeHabit);
 	rerenderContent(activeHabit);
 }
 // Работа с днями
 function addDays(e) {
-	const form = e.target;
 	e.preventDefault();
-	const data = new FormData(form);
-	const comment = data.get('comment');
-	form['comment'].classList.remove('error');
-	if (!comment) {
-		return form['comment'].classList.add('error');
+	const data = validateAndGetFormData(e.target, ['comment']);
+	if (!data) {
+		return;
 	}
 	habits = habits.map(habit => {
 		if (habit.id === globalActiveHabitId) {
 			return {
 				...habit,
-				days: habit.days.concat([{ comment }]),
+				days: habit.days.concat([{ comment: data.comment }]),
 			};
 		}
 		return habit;
 	});
-	form['comment'].value = '';
+	resetForm(e.target, ['comment']);
 	rerender(globalActiveHabitId);
 	saveData();
 }
@@ -126,14 +159,6 @@ function deleteDay(index) {
 	saveData();
 }
 
-function TogglePopup() {
-	if (page.popup.index.classList.contains('cover_hidden')) {
-		page.popup.index.classList.remove('cover_hidden');
-	} else {
-		page.popup.index.classList.add('cover_hidden');
-	}
-}
-
 // Работа с привычками
 
 function setIcon(context, icon) {
@@ -142,8 +167,40 @@ function setIcon(context, icon) {
 	activeIcon.classList.remove('icon_active');
 	context.classList.add('icon_active');
 }
+
+function addHabit(e) {
+	e.preventDefault();
+	const data = validateAndGetFormData(e.target, ['name', 'icon', 'target']);
+	if (!data) {
+		return;
+	}
+	const maxId = habits.reduce((acc, habit) => (acc > habit.id ? acc : habit.id), 0);
+	habits.push({
+		id: maxId + 1,
+		name: data.name,
+		target: data.target,
+		icon: data.icon,
+		days: [],
+	});
+	resetForm(e.target, ['name', 'target']);
+	togglePopup();
+	saveData();
+	rerender(maxId + 1);
+}
 //* Init
 (() => {
 	loadData();
-	rerender(habits[0].id);
+	const hashId = Number(document.location.hash.replace('#', ''));
+	const urlHabit = habits.find(habit => habit.id === hashId);
+	if (urlHabit) {
+		rerender(urlHabit.id);
+	} else {
+		rerender(habits[0].id);
+	}
 })();
+
+/*
+!Что Можно улучшить:
+TODO: Заменить шаблон когда привычек нет, добавить заглушку 
+TODO: Добавить функционал Светлая/Темная тема
+*/
